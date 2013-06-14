@@ -159,6 +159,5 @@ include 'templates/header.php';
         </tr>
       </table>
     </form>
-  </body>
-</html>
-<!-- Layout and CSS tricks obtained from http://www.bluerobot.com/web/layouts/ -->
+<?php
+include 'templates/footer.php';
