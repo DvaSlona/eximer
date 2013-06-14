@@ -13,6 +13,11 @@
   $db->Query("SET CHARACTER SET UTF8");
   $db->Query("SET NAMES UTF8");
 
+/**
+ * Настройки приложения
+ */
+$settings = array();
+
   /* We use this IMAP server to check user quotas */
   $imapquotaserver = "{mail.CHANGE.com:143/imap/notls}";
   $imap_to_check_quota = "no";
@@ -32,10 +37,10 @@
      domain name part of the URL to be used automatically, and the user
      cannot change it. Dropdown uses a dropdown style menu with <select>
      and <option>. Textbox presents a blank line for the user to type
-     their domain name one. Textbox might be prefered if you have a
+     their domain name one. Textbox might be preferred if you have a
      large number of domains, or don't want to reveal the names of sites
      which you host */
-  $domaininput = "dropdown";
+$settings['domaininput'] = 'dropdown';
 
   /* The UID's and GID's control the default UID and GID for new domains
      and if postmasters can define their own.

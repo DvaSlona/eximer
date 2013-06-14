@@ -11,8 +11,7 @@
                 </td>
                 <td>
                     <?php
-                    $domain = preg_replace ("/^mail\./", "", $_SERVER["SERVER_NAME"]);
-                    if ($domaininput == 'dropdown')
+                    if ('dropdown' == $settings['domaininput'])
                     {
                         $query = "SELECT domain FROM domains WHERE type='local' AND domain!='admin' ORDER BY domain";
                         $result = $db->query($query);
@@ -30,12 +29,13 @@
                         }
                         print '</select>';
                     }
-                    elseif ($domaininput == 'textbox')
+                    elseif ('textbox' == $settings['domaininput'])
                     {
                         print '<input type="text" name="domain" class="textfield"> (domain name)';
                     }
-                    elseif ($domaininput == 'static')
+                    elseif ('static' == $settings['domaininput'])
                     {
+                        $domain = preg_replace ('/^mail\./', '', $_SERVER['SERVER_NAME']);
                         print $domain
                             . '<input type="hidden" name="domain" value='
                             . $domain
