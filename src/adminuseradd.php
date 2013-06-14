@@ -22,14 +22,10 @@
   $query = "SELECT * FROM domains WHERE domain_id='{$_SESSION['domain_id']}'";
   $result = $db->query($query);
   $row = $result->fetchRow();
+
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Users'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="scripts.js" type="text/javascript"></script>
-  </head>
-  <body onLoad="document.adminadd.realname.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminuser.php"><?php echo _('Manage Accounts'); ?></a><br>

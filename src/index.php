@@ -1,20 +1,21 @@
 <?php
-  require_once dirname(__FILE__) . '/config/variables.php';
-  require_once dirname(__FILE__) . '/config/functions.php';
-  require_once dirname(__FILE__) . '/config/httpheaders.php';
+require_once dirname(__FILE__) . '/config/variables.php';
+require_once dirname(__FILE__) . '/config/functions.php';
+require_once dirname(__FILE__) . '/config/httpheaders.php';
+
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body onLoad="document.login.localpart.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="Centered">
       <form style="margin-top:3em;" name="login" method="post" action="login.php">
         <table align="center">
           <tr>
-            <td><?php echo _('Username'); ?>:<td><input name="localpart" type="text" class="textfield">&nbsp;@&nbsp;</td>
+            <td>
+                <label for="localpart-input"><?php echo _('Username'); ?></label>:
+            </td>
+            <td>
+                <input name="localpart" id="localpart-input" type="text" class="textfield" autofocus>&nbsp;@&nbsp;
+            </td>
             <td>
               <?php
                 $domain = preg_replace ("/^mail\./", "", $_SERVER["SERVER_NAME"]);
@@ -60,7 +61,5 @@
       if (isset($_GET['login']) && ($_GET['login'] == "failed")) {
         print "<div id='status'>" . _("Login failed") . "</div>";
       }
-    ?>
-  </body>
-</html>
-<!-- Layout and CSS tricks obtained from http://www.bluerobot.com/web/layouts/ -->
+
+include 'templates/footer.php';

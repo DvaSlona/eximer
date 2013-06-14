@@ -36,13 +36,10 @@
     header ("Location: admingroup.php?group_faildeleted={$_GET['localpart']}");
     die;
   }
+
+$tmplVars['title'] = _('Confirm Delete');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Confirm Delete'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-    <body>
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="admingroupadd.php"><?php echo _('Add Group'); ?></a><br>

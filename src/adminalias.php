@@ -3,13 +3,10 @@
   include_once dirname(__FILE__) . '/config/authpostmaster.php';
   include_once dirname(__FILE__) . '/config/functions.php';
   include_once dirname(__FILE__) . '/config/httpheaders.php';
+
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Users'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body>
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminaliasadd.php"><?php echo _('Add Alias'); ?></a></br>

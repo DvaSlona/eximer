@@ -2,13 +2,10 @@
   include_once dirname(__FILE__) . '/config/variables.php';
   include_once dirname(__FILE__) . '/config/authpostmaster.php';
   include_once dirname(__FILE__) . "/config/functions.php";
+
+$tmplVars['title'] = _('Add Group');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Add Group'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body onLoad="document.adminadd.localpart.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="admingroup.php"><?php echo _('Manage Groups'); ?></a><br>

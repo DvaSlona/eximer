@@ -6,13 +6,10 @@
   if (isset($_POST['listname'])) {
     header ("Location: $mailmanroot/admin/{$_POST['listname']}");
   }
+
+$tmplVars['title'] = _('Mailing List Administration');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Mailing List Administration'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body>
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <?php print "<a href=\"$mailmanroot/create\">" . _('Add a list') . '</a><br>'; ?>

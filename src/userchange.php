@@ -14,13 +14,10 @@
               WHERE blocklists.user_id='{$_SESSION['user_id']}'
 		AND users.user_id=blocklists.user_id";
   $blockresult = $db->query($blockquery);
+
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _("Virtual Exim") . ": " . _("Manage Users"); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body onLoad="document.userchange.realname.focus()">
     <?php include dirname(__FILE__) . "/config/header.php"; ?>
     <div id="menu">
       <a href="logout.php"><?php echo _("Logout"); ?></a><br>

@@ -3,13 +3,10 @@
   include_once dirname(__FILE__) . '/config/authsite.php';
   include_once dirname(__FILE__) . '/config/functions.php';
   include_once dirname(__FILE__) . '/config/httpheaders.php';
+
+$tmplVars['title'] = _('Manage Domains');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Domains'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body onLoad="document.siteadd.domain.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id='menu'>
       <a href="site.php"><?php echo _('Manage Domains'); ?></a><br>

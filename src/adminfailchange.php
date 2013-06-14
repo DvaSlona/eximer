@@ -7,12 +7,9 @@
   $query = "SELECT localpart FROM users WHERE user_id='{$_GET['user_id']}' AND domain_id='{$_SESSION['domain_id']}' AND users.type='fail'";
   $result = $db->query($query);
   if ($result->numRows()) { $row = $result->fetchRow(); }
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Users'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
   <body onLoad="document.failchange.localpart.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">

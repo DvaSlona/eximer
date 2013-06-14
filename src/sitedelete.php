@@ -49,13 +49,10 @@
     $result = $db->query($query);
     if ($result->numRows()) { $row = $result->fetchRow(); }
   }
+
+$tmplVars['title'] = _('Confirm Delete');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _("Virtual Exim") . ": " .  _("Confirm Delete"); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-    <body>
     <?php include dirname(__FILE__) . "/config/header.php"; ?>
     <div id='menu'>
       <a href='site.php'><?php echo _("Manage Domains"); ?></a><br>

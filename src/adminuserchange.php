@@ -20,14 +20,10 @@
   $blockquery = "SELECT blockhdr,blockval,block_id FROM blocklists
     WHERE blocklists.user_id='{$_GET['user_id']}'";
   $blockresult = $db->query($blockquery);
+
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Users'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="scripts.js" type="text/javascript"></script>
-  </head>
-  <body onLoad="document.userchange.realname.focus()">
   <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminuser.php"><?php echo _('Manage Accounts'); ?></a><br>

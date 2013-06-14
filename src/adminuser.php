@@ -15,13 +15,11 @@
   if (!isset($_POST['field']) || ($_POST['field'] != 'localpart')) {
     $_POST['field'] = 'realname';
   }
+
+
+$tmplVars['title'] = _('Manage Users');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Users'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body>
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="Menu">
       <a href="adminuseradd.php"><?php echo _('Add User'); ?></a>

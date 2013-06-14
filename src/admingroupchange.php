@@ -8,13 +8,10 @@
   $result = $db->query($query);
   $row = $result->fetchRow();
   $grouplocalpart = $row['name'];
+
+$tmplVars['title'] = _('Edit group');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Edit group'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body onLoad="document.groupchange.realname.focus()">
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="admingroup.php"><?php echo _('Manage Groups'); ?></a><br>

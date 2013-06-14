@@ -57,13 +57,10 @@ if ($_GET['confirm'] == '1') {
   $result = $db->query($query);
   if ($result->numRows()) { $row = $result->fetchRow(); }
 }
+
+$tmplVars['title'] = _('Confirm Delete');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Confirm Delete'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
-  <body>
     <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminuseradd.php"><?php echo _('Add User'); ?></a><br>

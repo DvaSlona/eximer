@@ -12,12 +12,10 @@
   if (!isset($_POST['searchfor'])) {
     $_POST['searchfor'] = '';
   }
+
+$tmplVars['title'] = _('Manage Sites');
+include 'templates/header.php';
 ?>
-<html>
-  <head>
-    <title><?php echo _('Virtual Exim') . ': ' . _('Manage Sites'); ?></title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-  </head>
   <?php include dirname(__FILE__) . '/config/header.php'; ?>
   <div id="menu">
     <a href="siteadd.php?type=alias"><?php echo _('Add alias domain'); ?></a><br>
