@@ -5,10 +5,8 @@
 
   $sqlserver = "unix+localhost";
   $sqltype = "mysql";
-  $sqldb = "vexim";
-  $sqluser = "vexim";
-  $sqlpass = "CHANGE";
-  $dsn = "$sqltype://$sqluser:$sqlpass@$sqlserver/$sqldb";
+    require __DIR__ . '/db.php';
+  $dsn = "$sqltype://$sqlUser:$sqlPassword@$sqlserver/$sqlDbName";
   $db = DB::connect($dsn);
   if (DB::isError($db)) { die ($db->getMessage()); }
   $db->setFetchMode(DB_FETCHMODE_ASSOC); 
