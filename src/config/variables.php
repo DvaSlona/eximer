@@ -7,11 +7,16 @@
   $sqltype = "mysql";
     require __DIR__ . '/db.php';
   $dsn = "$sqltype://$sqlUser:$sqlPassword@$sqlserver/$sqlDbName";
-  $db = DB::connect($dsn);
-  if (DB::isError($db)) { die ($db->getMessage()); }
-  $db->setFetchMode(DB_FETCHMODE_ASSOC); 
-  $db->Query("SET CHARACTER SET UTF8");
-  $db->Query("SET NAMES UTF8");
+/** @var DB_common $db */
+$db = DB::connect($dsn);
+if (DB::isError($db))
+{
+    die ($db->getMessage());
+}
+
+$db->setFetchMode(DB_FETCHMODE_ASSOC);
+$db->Query("SET CHARACTER SET UTF8");
+$db->Query("SET NAMES UTF8");
 
 /**
  * Настройки приложения
@@ -40,7 +45,7 @@ $settings = array();
      their domain name one. Textbox might be preferred if you have a
      large number of domains, or don't want to reveal the names of sites
      which you host */
-$settings['domaininput'] = 'dropdown';
+$settings['domaininput'] = 'textbox';
 
   /* The UID's and GID's control the default UID and GID for new domains
      and if postmasters can define their own.

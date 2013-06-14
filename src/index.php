@@ -6,6 +6,25 @@ require_once __DIR__ . '/config/httpheaders.php';
 include 'templates/header.php';
 include __DIR__ . '/config/header.php';
 
+switch ($settings['domaininput'])
+{
+    case 'dropdown':
+        $query = "SELECT domain FROM domains WHERE type='local' AND domain!='admin' ORDER BY domain";
+        $result = $db->query($query);
+        $domains = array();
+        if ($result->numRows())
+        {
+            while ($row = $result->fetchRow())
+            {
+                $domains []= $row['domain'];
+            }
+        }
+        break;
+    case 'static':
+        $domain = preg_replace ('/^mail\./', '', $_SERVER['SERVER_NAME']);
+        break;
+}
+
 include 'templates/login.php';
 
 include 'templates/footer.php';

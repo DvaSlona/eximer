@@ -7,39 +7,34 @@
                 </td>
                 <td>
                     <input name="localpart" id="username-input" type="text" class="textfield"
-                        autofocus>&nbsp;@&nbsp;
+                        autofocus> @
                 </td>
                 <td>
                     <?php
                     if ('dropdown' == $settings['domaininput'])
                     {
-                        $query = "SELECT domain FROM domains WHERE type='local' AND domain!='admin' ORDER BY domain";
-                        $result = $db->query($query);
                         ?>
                         <select name="domain" class="textfield">
-                        <option value=''>
+                            <option></option>
+                            <?php foreach ($domains as $domain): ?>
+                            <option><?php echo $domain; ?></option>
+                            <?php endforeach ?>
+                        </select>
                         <?php
-                        if ($result->numRows())
-                        {
-                            while ($row = $result->fetchRow())
-                            {
-                                print "<option value='{$row['domain']}'>{$row['domain']}"
-                                    . '</option>';
-                            }
-                        }
-                        print '</select>';
                     }
                     elseif ('textbox' == $settings['domaininput'])
                     {
-                        print '<input type="text" name="domain" class="textfield"> (domain name)';
+                        ?>
+                        <input type="text" name="domain" class="textfield">
+                        <?php
+                        _('(domain name)');
                     }
                     elseif ('static' == $settings['domaininput'])
                     {
-                        $domain = preg_replace ('/^mail\./', '', $_SERVER['SERVER_NAME']);
-                        print $domain
-                            . '<input type="hidden" name="domain" value='
-                            . $domain
-                            . '>';
+                        echo $domain;
+                        ?>
+                        <input type="hidden" name="domain" value="<?php echo $domain; ?>">
+                        <?php
                     }
                 ?>
                 </td>
@@ -54,8 +49,7 @@
             </tr>
             <tr>
                 <td colspan="3" style="text-align:center;padding-top:1em">
-                    <input name="submit" type="submit"
-                        value="<?php echo _("Submit"); ?>" class="longbutton">
+                    <button name="submit" type="submit" class="longbutton"><?php echo _("Submit"); ?></button>
                 </td>
             </tr>
         </table>
