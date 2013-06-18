@@ -3,37 +3,48 @@
     <head>
         <meta charset="UTF-8">
         <title><?php
-            echo _('Eximer');
-            if (null !== $tmplVars['title'])
-            {
-                echo ': ' . $tmplVars['title'];
-            }
+echo _('Eximer');
+/**
+ * @global array $tmplVars
+ */
+if (null !== $tmplVars['title'])
+{
+    echo ': ' . $tmplVars['title'];
+}
         ?></title>
         <link rel="stylesheet" href="style.css" type="text/css">
         <link rel="stylesheet" href="themes/default/all.css">
     </head>
     <body class="page">
 <?php
-if (isset($_SESSION['domain_id'])) {
-    $domheaderquery = "SELECT enabled FROM domains WHERE domains.domain_id='" . $_SESSION['domain_id'] . "'";
-    $domheaderresult = $db->query($domheaderquery);
-    $domheaderrow = $domheaderresult->fetchRow();
-    $usrheaderquery = "SELECT enabled FROM users WHERE localpart='" . $_SESSION['localpart'] . "' AND domain_id='" . $_SESSION['domain_id'] . "'";
-    $usrheaderresult = $db->query($usrheaderquery);
-    $usrheaderrow = $usrheaderresult->fetchRow();
+if (isset($_SESSION['domain_id']))
+{
+    $manager = DvaSlona\Eximer\DB\Manager::getInstance();
+    /** @var \DvaSlona\Eximer\DB\Object\Domain $domain */
+    $domain = $manager->getRepository('Domain')->find($_SESSION['domain_id']);
+    if (null !== $domain)
+    {
+        /** @var \DvaSlona\Eximer\DB\Object\User $user */
+        $user = $manager->getRepository('User')->findOneBy(array(
+            'localpart' => $_SESSION['localpart'],
+            'domain_id' => $_SESSION['domain_id']
+        ));
+    }
 }
 ?>
         <div class="page-header">
             <a href="https://github.com/DvaSlona/eximer" target="_blank" class="app-title"><?php echo _('Eximer'); ?></a>
+            <?php  if (isset($domain)) echo '— ' . $_SESSION['domain']; ?>
 <?php
-if (isset($_SESSION['domain'])) {
-    print     "-- " . $_SESSION['domain'] . " ";
-}
-if (isset($_SESSION['domain_id'])) {
-    if (($domheaderrow['enabled'] == "0") || ($domheaderrow['enabled'] == "f")) {
-        print   _("-- domain disabled (please see your administrator).");
-    } else if (($usrheaderrow['enabled'] == "0") ||($usrheaderrow['enabled'] == "f")) {
-        print   _("-- account disabled (please see your administrator).");
+if (isset($domain))
+{
+    if (null === $domain || !$domain->isEnabled())
+    {
+        echo _('— domain disabled (please see your administrator).');
+    }
+    elseif (null === $user || !$user->isEnabled())
+    {
+        echo _('— account disabled (please see your administrator).');
     }
 }
 // First a few status messages about account maintenance

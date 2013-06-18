@@ -1,5 +1,8 @@
 <?php
-    // Strictly three aren't alone functions, but they are functions of sorts 
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
+    // Strictly three aren't alone functions, but they are functions of sorts
     // and we call it every
     // page to prevent tainted data expoits
     foreach ($_GET as $getkey => $getval) 
@@ -202,4 +205,19 @@
         $text = "=?UTF-8?Q?" . $text . "?=" ;
         return $text;
     }
-?>
+
+spl_autoload_register(
+    function ($class)
+    {
+        if (substr($class, 0, 16) == 'DvaSlona\Eximer\\')
+        {
+            $filename = __DIR__ . '/../classes' . str_replace('\\', '/', substr($class, 15))
+                . '.php';
+            if (file_exists($filename))
+            {
+                /** @noinspection PhpIncludeInspection */
+                include $filename;
+            }
+        }
+    }
+);
