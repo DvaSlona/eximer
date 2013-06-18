@@ -2,16 +2,6 @@
   Layout and CSS tricks obtained from 
   http://www.bluerobot.com/web/layouts/ 
 */
-
-
-body {
-	font-size: 10pt;
-	margin:0px;
-	padding:0px;
-	font-family:verdana, arial, helvetica, sans-serif;
-	color:#333;
-	background-color:white;
-	}
 h1 {
 	margin:0px 0px 15px 0px;
 	padding:0px;

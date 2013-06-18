@@ -1,0 +1,32 @@
+a,
+summary
+{
+    color: #09c;
+}
+
+a:visited,
+summary:visited
+{
+    color: #07a;
+}
+
+a:hover,
+summary:hover
+{
+    background-color: #eee;
+}
+
+input[type=checkbox]
+{
+	vertical-align: bottom;
+}
+
+hgroup > h1
+{
+	margin: 0;
+}
+
+summary
+{
+    cursor: pointer;
+}
