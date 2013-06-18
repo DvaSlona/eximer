@@ -18,14 +18,6 @@ p {
 #Content>p {margin:0px;}
 #Content>p+p {text-indent:30px;}
 
-a {
-	color:#09c;
-	font-size:11px;
-	text-decoration:none;
-	font-weight:600;
-	font-family:verdana, arial, helvetica, sans-serif;
-	}
-
 p.alpha {
 	padding-bottom: 2em;
 }
@@ -79,38 +71,6 @@ div.row span.formw {
 .textfield      { border-color: #000000;
 		  border-width: 1px; }
 
-a:link {color:#09c;}
-a:visited {color:#07a;}
-a:hover {background-color:#eee;}
-
-#Header {
-	font-size: 12pt;
-	margin:50px 0px 10px 0px;
-	padding:10px 0px 2px 20px;
-	/* For IE5/Win's benefit height = [correct height] + [top padding] + [top and bottom border widths] */
-	height:40px; /* 14px + 17px + 2px = 33px */
-	border-style:solid;
-	border-color:black;
-	border-width:1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
-	line-height:11px;
-	background-color:#eee;
-	voice-family: "\"}\"";
-	voice-family:inherit;
-	height:28px; /* the correct height */
-	}
-body>#Header {height:28px;}
-
-#Header>a:link, #Header>a:visited {
-  font-family:verdana, arial, helvetica, sans-serif;
-  font-size: 12pt;
-  color: #000;
-}
-
-#Header>a:hover {
-  font-family:verdana, arial, helvetica, sans-serif;
-  font-size: 12pt;
-  color: #09c;
-}
 #Content {
 	margin: 0px 50px 50px 250px;
 	padding:10px;

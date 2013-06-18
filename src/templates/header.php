@@ -22,8 +22,10 @@ if (isset($_SESSION['domain_id'])) {
     $usrheaderresult = $db->query($usrheaderquery);
     $usrheaderrow = $usrheaderresult->fetchRow();
 }
-
-print "<div id=\"Header\"><p><a href=\"https://github.com/avleen/vexim2\" target=\"_blank\">" . _("Virtual Exim") . "</a> ";
+?>
+        <div class="page-header">
+            <a href="https://github.com/DvaSlona/eximer" target="_blank" class="app-title"><?php echo _('Eximer'); ?></a>
+<?php
 if (isset($_SESSION['domain'])) {
     print     "-- " . $_SESSION['domain'] . " ";
 }
@@ -101,6 +103,5 @@ else if (isset($_GET['canceldelete'])) {
     printf (_("-- Error getting UID/GID for %s"), $_GET['failuidguid']);
 }
 if (isset($_GET['login']) && ($_GET['login'] == "failed")) { print _("Login failed"); }
-
-print "</p></div>";
 ?>
+        </div>

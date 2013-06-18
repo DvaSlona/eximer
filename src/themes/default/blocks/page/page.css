@@ -1,0 +1,15 @@
+/**
+ * Контейнер страницы
+ *
+ * Класс должен применяться к тегу body.
+ */
+.page
+{
+    background: #fff;
+    color: #000;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
