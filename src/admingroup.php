@@ -6,7 +6,6 @@
 $tmplVars['title'] = _('List groups');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="Menu">
       <a href="admingroupadd.php"><?php echo _('Add Group'); ?></a>
       <br>

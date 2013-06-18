@@ -18,7 +18,6 @@
 $tmplVars['title'] = _('Manage Users');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . "/config/header.php"; ?>
     <div id="menu">
       <a href="logout.php"><?php echo _("Logout"); ?></a><br>
     </div>

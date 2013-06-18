@@ -24,7 +24,6 @@
 $tmplVars['title'] = _('Confirm Delete');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminaliasadd.php"><?php echo _('Add Alias'); ?></a><br>
       <a href="admin.php"><?php echo _('Main Menu'); ?></a><br>

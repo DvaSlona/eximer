@@ -10,8 +10,6 @@
 $tmplVars['title'] = _('Manage Users');
 include 'templates/header.php';
 ?>
-  <body onLoad="document.failchange.localpart.focus()">
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminfail.php"><?php echo _('Manage Fails'); ?></a><br>
       <a href="adminfailadd.php"><?php echo _('Add Fail'); ?></a><br>

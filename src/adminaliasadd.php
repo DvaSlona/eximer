@@ -11,7 +11,6 @@
 $tmplVars['title'] = _('Manage Users');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="adminalias.php"><?php echo _('Manage Aliases'); ?></a><br>
       <a href="admin.php"><?php echo _('Main Menu'); ?></a><br>

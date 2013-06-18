@@ -6,7 +6,6 @@
 
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="Centered">
       <table align="center">
         <tr>

@@ -53,7 +53,6 @@
 $tmplVars['title'] = _('Confirm Delete');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . "/config/header.php"; ?>
     <div id='menu'>
       <a href='site.php'><?php echo _("Manage Domains"); ?></a><br>
       <a href='sitepassword.php'><?php echo _("Site Password"); ?></a><br>

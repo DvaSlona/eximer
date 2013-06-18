@@ -12,7 +12,6 @@
 $tmplVars['title'] = _('Edit group');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <a href="admingroup.php"><?php echo _('Manage Groups'); ?></a><br>
       <a href="admingroupadd.php"><?php echo _('Add Group'); ?></a></br>

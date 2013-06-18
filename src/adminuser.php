@@ -20,7 +20,6 @@
 $tmplVars['title'] = _('Manage Users');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="Menu">
       <a href="adminuseradd.php"><?php echo _('Add User'); ?></a>
       <?php

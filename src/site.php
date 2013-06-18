@@ -16,7 +16,6 @@
 $tmplVars['title'] = _('Manage Sites');
 include 'templates/header.php';
 ?>
-  <?php include dirname(__FILE__) . '/config/header.php'; ?>
   <div id="menu">
     <a href="siteadd.php?type=alias"><?php echo _('Add alias domain'); ?></a><br>
     <a href="siteadd.php?type=local"><?php echo _('Add local domain'); ?></a><br>

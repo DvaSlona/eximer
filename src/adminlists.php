@@ -10,7 +10,6 @@
 $tmplVars['title'] = _('Mailing List Administration');
 include 'templates/header.php';
 ?>
-    <?php include dirname(__FILE__) . '/config/header.php'; ?>
     <div id="menu">
       <?php print "<a href=\"$mailmanroot/create\">" . _('Add a list') . '</a><br>'; ?>
       <a href="admin.php"><?php echo _('Main Menu'); ?></a><br>
