@@ -9,6 +9,7 @@
 namespace DvaSlona\Eximer\DB\Repository;
 
 use PDO;
+use PDOStatement;
 use DvaSlona\Eximer\DB\Object\AbstractObject;
 
 /**
@@ -71,10 +72,36 @@ abstract class AbstractRepository
             $query->bindValue(':id', $id);
             $query->execute();
             $raw = $query->fetch(PDO::FETCH_ASSOC);
-            $objectClass = str_replace('\\Repository\\', '\\Object\\', get_class($this));
+            $objectClass = $this->getObjectClass();
             $this->registry[$id] = new $objectClass($raw);
         }
         return $this->registry[$id];
+    }
+
+    /**
+     * Возвращает объекты по набору условий
+     *
+     * @param array $set
+     *
+     * @return AbstractObject[]
+     *
+     * @todo добавить указание типа в bindValue
+     */
+    public function findBy($set)
+    {
+        $where = array();
+        foreach (array_keys($set) as $field)
+        {
+            $where []= "$field = :$field";
+        }
+        $where = implode(' AND ', $where);
+        $query = $this->dbh->prepare(
+            "SELECT * FROM {$this->tableName} WHERE $where");
+        foreach ($set as $field => $value)
+        {
+            $query->bindValue(":$field", $value);
+        }
+        return $this->loadFromQuery($query);
     }
 
     /**
@@ -112,7 +139,7 @@ abstract class AbstractRepository
             return $this->registry[$raw[$this->keyName]];
         }
 
-        $objectClass = str_replace('\\Repository\\', '\\Object\\', get_class($this));
+        $objectClass = $this->getObjectClass();
         $this->registry[$raw[$this->keyName]] = new $objectClass($raw);
         return $this->registry[$raw[$this->keyName]];
     }
@@ -131,22 +158,42 @@ abstract class AbstractRepository
         {
             $query->bindValue($name, $value);
         }
+        return $this->loadFromQuery($query);
+    }
+
+    /**
+     * Загружает объекты из запроса
+     *
+     * @param PDOStatement $query
+     *
+     * @return AbstractObject[]
+     */
+    protected function loadFromQuery(PDOStatement $query)
+    {
         $query->execute();
         $raw = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        $found = array();
-        $objectClass = str_replace('\\Repository\\', '\\Object\\', get_class($this));
+        $objects = array();
+        $objectClass = $this->getObjectClass();
         foreach ($raw as $rawObject)
         {
-            if (array_key_exists($rawObject[$this->keyName], $this->registry))
+            if (!array_key_exists($rawObject[$this->keyName], $this->registry))
             {
-                return $this->registry[$rawObject[$this->keyName]];
+                $this->registry[$rawObject[$this->keyName]] = new $objectClass($rawObject);
             }
-
-            $this->registry[$rawObject[$this->keyName]] = new $objectClass($rawObject);
-            $found []= $this->registry[$rawObject[$this->keyName]];
+            $objects []= $this->registry[$rawObject[$this->keyName]];
         }
-        return $found;
+        return $objects;
+    }
+
+    /**
+     * Возвращает класс объектов этого хранилища
+     *
+     * @return string
+     */
+    protected function getObjectClass()
+    {
+        return str_replace('\\Repository\\', '\\Object\\', get_class($this));
     }
 }
 
