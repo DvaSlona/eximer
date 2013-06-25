@@ -116,5 +116,37 @@ abstract class AbstractRepository
         $this->registry[$raw[$this->keyName]] = new $objectClass($raw);
         return $this->registry[$raw[$this->keyName]];
     }
+
+    /**
+     * @param string $where   условие WHERE с именованными псевдопеременными в стиле PDO
+     * @param array  $params  значения псевдопеременных
+     *
+     * @return AbstractObject[]
+     */
+    public function findBySql($where, array $params)
+    {
+        $query = $this->dbh->prepare(
+            "SELECT * FROM {$this->tableName} WHERE $where");
+        foreach ($params as $name => $value)
+        {
+            $query->bindValue($name, $value);
+        }
+        $query->execute();
+        $raw = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $found = array();
+        $objectClass = str_replace('\\Repository\\', '\\Object\\', get_class($this));
+        foreach ($raw as $rawObject)
+        {
+            if (array_key_exists($rawObject[$this->keyName], $this->registry))
+            {
+                return $this->registry[$rawObject[$this->keyName]];
+            }
+
+            $this->registry[$rawObject[$this->keyName]] = new $objectClass($rawObject);
+            $found []= $this->registry[$rawObject[$this->keyName]];
+        }
+        return $found;
+    }
 }
 
