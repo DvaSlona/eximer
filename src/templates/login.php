@@ -19,7 +19,7 @@
                         <select name="domain" class="textfield">
                             <option></option>
                             <?php foreach ($domains as $domain): ?>
-                            <option><?php echo $domain; ?></option>
+                            <option><?php echo $domain->getName(); ?></option>
                             <?php endforeach ?>
                         </select>
                         <?php
