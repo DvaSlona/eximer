@@ -1,4 +1,6 @@
-<div id="Centered">
+<?php include 'header.php'; ?>
+
+    <div id="Centered">
     <form style="margin-top:3em;" name="login" method="post" action="login.php">
         <table align="center">
             <tr>
@@ -60,4 +62,6 @@ if (isset($_GET['login']) && ($_GET['login'] == "failed"))
 {
     print "<div id='status'>" . _("Login failed") . "</div>";
 }
+
+include 'footer.php';
 
