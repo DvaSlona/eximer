@@ -3,7 +3,7 @@
   require_once "DB.php";
   include_once dirname(__FILE__) . "/i18n.php";
 
-  $sqlserver = "unix+localhost";
+  $sqlserver = "localhost";
   $sqltype = "mysql";
     require __DIR__ . '/db.php';
   $dsn = "$sqltype://$sqlUser:$sqlPassword@$sqlserver/$sqlDbName";
@@ -58,8 +58,8 @@ $settings['domaininput'] = 'textbox';
      Make sure the directory belongs to the configured $uid/$gid! */
   $mailroot = "/usr/local/mail/";
 
-  /* path to Mailman */
-  $mailmanroot = "http://www.EXAMPLE.com/mailman";
+/* path to Mailman */
+$settings['mailmanroot'] = 'http://EXAMPLE.com/mailman';
 
   /* sa_tag is the default value to offer when we create new domains for SpamAssassin tagging
      sa_refuse is the default value to offer when we create new domains for SpamAssassin dropping */

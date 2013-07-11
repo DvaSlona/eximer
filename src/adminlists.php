@@ -4,14 +4,14 @@
   include_once dirname(__FILE__) . '/config/httpheaders.php';
   include_once dirname(__FILE__) . '/config/authpostmaster.php';
   if (isset($_POST['listname'])) {
-    header ("Location: $mailmanroot/admin/{$_POST['listname']}");
+    header ("Location: {$settings['mailmanroot']}/admin/{$_POST['listname']}");
   }
 
 $tmplVars['title'] = _('Mailing List Administration');
 include 'templates/header.php';
 ?>
     <div id="menu">
-      <?php print "<a href=\"$mailmanroot/create\">" . _('Add a list') . '</a><br>'; ?>
+      <?php print "<a href=\"{$settings['mailmanroot']}/create\">" . _('Add a list') . '</a><br>'; ?>
       <a href="admin.php"><?php echo _('Main Menu'); ?></a><br>
       <br><a href="logout.php"><?php echo _('Logout'); ?></a><br>
     </div>
