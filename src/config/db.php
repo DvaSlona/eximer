@@ -11,10 +11,10 @@ $sqlDbName = 'exim';
 /**
  * Пользователь
  */
-$sqlUser = 'exim';
+$sqlUser = 'user';
 
 /**
  * Пароль
  */
-$sqlPassword = 'CHANGE';
+$sqlPassword = 'password';
 
