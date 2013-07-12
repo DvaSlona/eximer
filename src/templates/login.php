@@ -33,9 +33,9 @@
                     }
                     elseif ('static' == $settings['domaininput'])
                     {
-                        echo $domain;
+                        echo $domain->getName();
                         ?>
-                        <input type="hidden" name="domain" value="<?php echo $domain; ?>">
+                        <input type="hidden" name="domain" value="<?php echo $domain->getName(); ?>">
                         <?php
                     }
                 ?>
