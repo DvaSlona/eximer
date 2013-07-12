@@ -1,0 +1,9 @@
+.form__field_type_text,
+input[type=text]
+{
+	border-color: #aaa #ddd #ddd #aaa;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 1px 1px 1px rgba(100, 100, 100, 0.3) inset;
+	padding: 2px;
+}
