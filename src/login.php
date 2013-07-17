@@ -1,8 +1,4 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
 	# first check if we have sufficient post variables to achieve a successful login... if not the login fails immediately
 	if (!isset($_POST['crypt']) || $_POST['crypt']==''
 		|| !isset($_POST['localpart']) || $_POST['localpart']==''

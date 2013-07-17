@@ -1,9 +1,6 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authuser.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+// TODO Проверить, не должен ли здесь подключаться authpostmaster
+include_once dirname(__FILE__) . '/config/authuser.php';
   if ($_GET[action] == 'delete') {
     $query = "DELETE FROM blocklists WHERE block_id='{$_GET['block_id']}'
 			AND domain_id='{$_SESSION['domain_id']}' AND user_id='{$_GET['user_id']}'";

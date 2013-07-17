@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   $query = "UPDATE users SET localpart='{$_POST['localpart']}',
     username='{$_POST['localpart']}@{$_SESSION['domain']}'
     WHERE user_id='{$_POST['user_id']}' AND domain_id='{$_SESSION['domain_id']}' AND type='fail'";

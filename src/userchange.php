@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . "/config/variables.php";
-  include_once dirname(__FILE__) . "/config/authuser.php";
-  include_once dirname(__FILE__) . "/config/functions.php";
-  include_once dirname(__FILE__) . "/config/httpheaders.php";
-
+include_once dirname(__FILE__) . '/config/authuser.php';
   $domquery = "SELECT avscan,spamassassin FROM domains WHERE domain_id='{$_SESSION['domain_id']}'";
   $domresult = $db->query($domquery);
   if (!DB::isError($domresult)) { $domrow = $domresult->fetchRow(); }

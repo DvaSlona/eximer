@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   $query = "SELECT avscan,spamassassin FROM domains
     WHERE domain_id='{$_SESSION['domain_id']}'";
   $result = $db->query($query);

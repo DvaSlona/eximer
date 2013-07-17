@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   # Fix the boolean values
   $_POST['is_public'] = isset($_POST['is_public']) ? 'Y' : 'N';
   $_POST['enabled'] = isset($_POST['enabled']) ? 1 : 0;

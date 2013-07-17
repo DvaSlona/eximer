@@ -1,9 +1,6 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-
-  # confirm that the user is updating a group they are permitted to change before going further  
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
+  # confirm that the user is updating a group they are permitted to change before going further
   $query = "SELECT * FROM groups WHERE id='{$_REQUEST['group_id']}' AND domain_id='{$_SESSION['domain_id']}'";
   $result = $db->query($query);
   if ($result->numRows()<1) {

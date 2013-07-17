@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   check_user_exists(
     $db,$_POST['localpart'],$_SESSION['domain_id'],'adminfail.php'
   );

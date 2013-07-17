@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . "/config/variables.php";
-  include_once dirname(__FILE__) . "/config/authsite.php";
-  include_once dirname(__FILE__) . "/config/functions.php";
-  include_once dirname(__FILE__) . "/config/httpheaders.php";
-
+include_once dirname(__FILE__) . '/config/authsite.php';
   // Delete the domain's users
   if (($_POST['confirm'] == "1") && ($_POST['type'] != "alias")) {
     $usrdelquery = "DELETE FROM users WHERE domain_id='{$_POST['domain_id']}'";

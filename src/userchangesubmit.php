@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . "/config/variables.php";
-  include_once dirname(__FILE__) . "/config/authuser.php";
-  include_once dirname(__FILE__) . "/config/functions.php";
-  include_once dirname(__FILE__) . "/config/httpheaders.php";
+include_once dirname(__FILE__) . '/config/authuser.php';
   if (isset($_POST['on_vacation'])) {$_POST['on_vacation'] = 1;} else {$_POST['on_vacation'] = 0;}
   if (isset($_POST['on_forward'])) {$_POST['on_forward'] = 1;} else {$_POST['on_forward'] = 0;}
   if (isset($_POST['unseen'])) {$_POST['unseen'] = 1;} else {$_POST['unseen'] = 0;}

@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   $query = "SELECT localpart,realname,smtp,on_avscan,on_spamassassin,
     admin,enabled FROM users 	
 	WHERE user_id='{$_GET['user_id']}' AND domain_id='{$_SESSION['domain_id']}' AND type='alias'";

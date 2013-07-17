@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   # enforce limit on the maximum number of user accounts in the domain
   $query = "SELECT (count(users.user_id) < domains.max_accounts)
     OR (domains.max_accounts = 0) AS allowed FROM

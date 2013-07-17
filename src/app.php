@@ -18,5 +18,9 @@ if (!file_exists($filename))
     die;
 }
 
+require_once 'config/variables.php';
+include_once 'config/functions.php';
+include_once 'config/httpheaders.php';
+
 include $filename;
 

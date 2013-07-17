@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . "/config/functions.php";
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   if ($_GET['confirm'] == '1') {
     # confirm that the user is deleting a group they are permitted to change before going further  
 	$query = "SELECT * FROM groups WHERE id='{$_GET['group_id']}' AND domain_id='{$_SESSION['domain_id']}'";

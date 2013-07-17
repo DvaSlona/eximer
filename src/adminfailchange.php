@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   $query = "SELECT localpart FROM users WHERE user_id='{$_GET['user_id']}' AND domain_id='{$_SESSION['domain_id']}' AND users.type='fail'";
   $result = $db->query($query);
   if ($result->numRows()) { $row = $result->fetchRow(); }

@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
-
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
   if ($_GET['confirm'] == '1') {
     $query = "DELETE FROM users 
       WHERE user_id='{$_GET['user_id']}'

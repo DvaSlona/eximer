@@ -1,9 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . "/config/variables.php";
-  include_once dirname(__FILE__) . "/config/authuser.php";
-  include_once dirname(__FILE__) . "/config/functions.php";
-  include_once dirname(__FILE__) . "/config/httpheaders.php";
-
+include_once dirname(__FILE__) . '/config/authuser.php';
   if ($_GET['action'] == "delete") {
     $query = "DELETE FROM blocklists WHERE block_id='{$_GET['block_id']}'";
     $result = $db->query($query);

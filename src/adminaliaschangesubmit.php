@@ -1,8 +1,5 @@
 <?php
-  include_once dirname(__FILE__) . '/config/variables.php';
-  include_once dirname(__FILE__) . '/config/authpostmaster.php';
-  include_once dirname(__FILE__) . '/config/functions.php';
-  include_once dirname(__FILE__) . '/config/httpheaders.php';
+include_once dirname(__FILE__) . '/config/authpostmaster.php';
 
   # confirm that the postmaster is updating an alias they are permitted to change before going further  
   $query = "SELECT localpart,realname,smtp,on_spamassassin,
