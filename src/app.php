@@ -23,25 +23,8 @@ else
     $filename = basename($filename);
 }
 
-/* SQL Database login information */
-require "DB.php";
-include 'config/i18n.php';
-
-$sqlserver = "localhost";
-$sqltype = "mysql";
 require 'config/db.php';
-$dsn = "$sqltype://$sqlUser:$sqlPassword@$sqlserver/$sqlDbName";
-
-/** @var DB_common $db */
-$db = DB::connect($dsn);
-if (DB::isError($db))
-{
-    die($db->getMessage());
-}
-$db->setFetchMode(DB_FETCHMODE_ASSOC);
-$db->Query("SET CHARACTER SET UTF8");
-$db->Query("SET NAMES UTF8");
-
+include 'config/i18n.php';
 require_once 'config/variables.php';
 include_once 'config/functions.php';
 include_once 'config/httpheaders.php';

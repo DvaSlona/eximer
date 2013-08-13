@@ -51,11 +51,29 @@ class Manager
      */
     private function __construct()
     {
-        $type = $GLOBALS['sqltype'];
+        $sqlserver = "localhost";
+        $sqltype = "mysql";
+
+        $type = $sqltype;
         $dbname = $GLOBALS['sqlDbName'];
-        $host = $GLOBALS['sqlserver'];
+        $host = $sqlserver;
         $this->dbh = new PDO("$type:dbname=$dbname;host=$host",
             $GLOBALS['sqlUser'], $GLOBALS['sqlPassword']);
+
+        /* Устаревшее соединение */
+        require "DB.php";
+        $dsn = "$sqltype://{$GLOBALS['sqlUser']}:{$GLOBALS['sqlPassword']}@$sqlserver/{$GLOBALS['sqlDbName']}";
+
+        /** @var \DB_common $db */
+        $db = \DB::connect($dsn);
+        if (\DB::isError($db))
+        {
+            die($db->getMessage());
+        }
+        $db->setFetchMode(DB_FETCHMODE_ASSOC);
+        $db->Query("SET CHARACTER SET UTF8");
+        $db->Query("SET NAMES UTF8");
+        $GLOBALS['db'] = $db;
     }
 
     /**
