@@ -33,13 +33,13 @@ include 'templates/header.php';
         <tr>
           <td><?php echo _('Name'); ?>:</td>
           <td colspan="2">
-            <input type="textfield" size="25" name="realname" class="textfield">
+            <input type="text" size="25" name="realname" class="textfield">
           </td>
         </tr>
         <tr>
           <td><?php echo _('Address'); ?>:</td>
-          <td colspan="2">
-            <input type="textfield" size="25" name="localpart"
+          <td colspan="2" style="white-space: nowrap">
+            <input type="text" size="25" name="localpart"
               class="textfield">@<?php print $_SESSION['domain']; ?>
           </td>
         </tr>
@@ -57,7 +57,7 @@ include 'templates/header.php';
         </tr>
         <tr>
           <td></td>
-          <td colspan="2">
+          <td colspan="2" style="white-space: nowrap">
             <input type="button" value="<?php echo _('Generate password'); ?>" onclick="suggestPassword('suggest')">
             <input type="text" size="15" id="suggest" class="textfield">
             <input type="button" value="<?php echo _('Copy'); ?>" onclick="copyPassword('suggest', 'clear', 'vclear')">
@@ -81,7 +81,7 @@ include 'templates/header.php';
         </tr>
       <?php } ?>
         <tr>
-          <td><?php echo _('Has domain admin privileges?'); ?></td>
+          <td style="white-space: nowrap"><?php echo _('Has domain admin privileges?'); ?></td>
           <td colspan="2"><input name="admin" type="checkbox"></td>
         </tr>
         <?php if ($row['pipe'] == "1") { ?>
@@ -148,8 +148,8 @@ include 'templates/header.php';
           <td colspan="2"><input name="enabled" type="checkbox" checked></td>
         </tr>
         <tr>
-          <td colspan="3" class="button">
-          <input name="submit" type="submit" value="<?php echo _('Submit'); ?>">
+          <td colspan="3">
+            <button name="submit" type="submit" class="button"><?php echo _('Submit'); ?></button>
           </td>
         </tr>
       </table>
