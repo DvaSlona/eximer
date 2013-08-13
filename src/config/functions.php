@@ -128,16 +128,16 @@ error_reporting(E_ALL);
      */
     function crypt_password($clear, $salt = '')
     {
-        global $cryptscheme;
+        global $settings;
         
-        if ($cryptscheme == 'sha')
+        if ($settings['cryptscheme'] == 'sha')
         {
             $hash = sha1($clear);
             $cryptedpass = '{SHA}' . base64_encode(pack('H*', $hash));
         }
         else
         {
-            if ($cryptscheme == 'des')
+            if ($settings['cryptscheme'] == 'des')
             {
                 if (!empty($salt))
                 {
@@ -149,7 +149,7 @@ error_reporting(E_ALL);
                 }
             }
             else
-            if ($cryptscheme == 'md5')
+            if ($settings['cryptscheme'] == 'md5')
             {
                 if (!empty($salt))
                 {

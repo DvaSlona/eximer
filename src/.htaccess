@@ -1,2 +1,3 @@
 RewriteEngine on
-RewriteRule \.php$ app.php [last]
+RewriteBase /eximer/
+RewriteRule (^|\.php)$ app.php [last]

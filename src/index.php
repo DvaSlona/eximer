@@ -1,5 +1,4 @@
 <?php
-$manager = DvaSlona\Eximer\DB\Manager::getInstance();
 $repo = $manager->getRepository('Domain');
 
 switch ($settings['domaininput'])

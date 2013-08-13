@@ -1,23 +1,4 @@
 <?php
-  /* SQL Database login information */
-  require_once "DB.php";
-  include_once dirname(__FILE__) . "/i18n.php";
-
-  $sqlserver = "localhost";
-  $sqltype = "mysql";
-    require __DIR__ . '/db.php';
-  $dsn = "$sqltype://$sqlUser:$sqlPassword@$sqlserver/$sqlDbName";
-/** @var DB_common $db */
-$db = DB::connect($dsn);
-if (DB::isError($db))
-{
-    die ($db->getMessage());
-}
-
-$db->setFetchMode(DB_FETCHMODE_ASSOC);
-$db->Query("SET CHARACTER SET UTF8");
-$db->Query("SET NAMES UTF8");
-
 /**
  * Настройки приложения
  */
@@ -27,24 +8,28 @@ $settings = array();
   $imapquotaserver = "{mail.CHANGE.com:143/imap/notls}";
   $imap_to_check_quota = "no";
 
-  /* Setting this to 0 if only admins should be allowed to login */
-  $AllowUserLogin = 1;
+/*
+ * Setting this to 0 if only admins should be allowed to login
+ */
+$settings['AllowUserLogin'] = 1;
 
   /* Choose whether to break up domain and user lists alphabetically */
   $alphadomains = 1;
   $alphausers = 1;
 
-  /* Set to either "des" or "md5" depending on your crypt() libraries */
-  $cryptscheme = "md5";
+/* Set to either "des" or "md5" depending on your crypt() libraries */
+$settings['cryptscheme'] = 'md5';
 
-  /* Choose the type of domain name input for the index page. It should
-     either be 'static', 'dropdown' or 'textbox'. Static causes the
-     domain name part of the URL to be used automatically, and the user
-     cannot change it. Dropdown uses a dropdown style menu with <select>
-     and <option>. Textbox presents a blank line for the user to type
-     their domain name one. Textbox might be preferred if you have a
-     large number of domains, or don't want to reveal the names of sites
-     which you host */
+/*
+ * Choose the type of domain name input for the index page. It should
+ * either be 'static', 'dropdown' or 'textbox'. Static causes the
+ * domain name part of the URL to be used automatically, and the user
+ * cannot change it. Dropdown uses a dropdown style menu with <select>
+ * and <option>. Textbox presents a blank line for the user to type
+ * their domain name one. Textbox might be preferred if you have a
+ * large number of domains, or don't want to reveal the names of sites
+ * which you host
+ */
 $settings['domaininput'] = 'textbox';
 
   /* The UID's and GID's control the default UID and GID for new domains
