@@ -24,7 +24,7 @@ class Manager
     /**
      * Авторизованный пользователь
      *
-     * @var null|User
+     * @var \DvaSlona\Eximer\DB\Object\User|null
      */
     private $user = null;
 
@@ -50,13 +50,28 @@ class Manager
     {
         if (null === $this->user)
         {
-            if (array_key_exists('user_id', $_SESSION))
+            if (array_key_exists('user_id', $_SESSION)
+                && array_key_exists('crypt', $_SESSION))
             {
                 $db = DbManager::getInstance();
-                $this->user = $db->getRepository('User')->find(intval($_SESSION['user_id']));
+                /** @var User $user */
+                $user = $db->getRepository('User')->find(intval($_SESSION['user_id']));
+                if ($user && $user->getEncryptedPassword() == $_SESSION['crypt'])
+                {
+                    $this->user = $user;
+                }
             }
         }
         return $this->user;
+    }
+
+    /**
+     * Выводит сообщение о том, что пользователь не авторизован на выполнение запрошенного действия
+     */
+    public function notAuthorized()
+    {
+        header('index.php?login=failed');
+        die;
     }
 
     /**

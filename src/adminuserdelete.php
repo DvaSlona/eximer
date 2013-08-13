@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__FILE__) . '/config/authpostmaster.php';
+include_once __DIR__ . '/config/authpostmaster.php';
 # confirm that the postmaster is looking to delete a user they are permitted to change before going further
 $query = "SELECT * FROM users WHERE user_id='{$_GET['user_id']}'
 	AND domain_id='{$_SESSION['domain_id']}'	
