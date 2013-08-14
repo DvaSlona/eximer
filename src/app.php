@@ -45,6 +45,9 @@ else
     }
 
     $manager = DvaSlona\Eximer\DB\Manager::getInstance();
+    $domainsRepo = $manager->getRepository('Domain');
+    /** @var \DvaSlona\Eximer\DB\Object\Domain $domain */
+    $domain = $domainsRepo->find($_SESSION['domain_id']);
 
     /** @noinspection PhpIncludeInspection */
     include $filename;
