@@ -7,6 +7,7 @@
  */
 
 namespace DvaSlona\Eximer\DB\Object;
+
 use DvaSlona\Eximer\DB\Manager;
 
 /**
@@ -54,6 +55,22 @@ class Domain extends AbstractObject
         $repo = $manager->getRepository('DomainAlias');
         $aliases = $repo->findBy(array('domain_id' => $this->getId()));
         return $aliases;
+    }
+
+    /**
+     * Возвращает список администраторов домена
+     *
+     * @return User[]
+     */
+    public function getAdmins()
+    {
+        $manager = Manager::getInstance();
+        $repo = $manager->getRepository('User');
+        $admins = $repo->findBy(array(
+            'domain_id' => $this->getId(),
+            'admin' => 1,
+        ));
+        return $admins;
     }
 }
 
