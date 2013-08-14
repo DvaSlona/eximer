@@ -5,24 +5,21 @@ $query = "SELECT * FROM users WHERE user_id='{$_GET['user_id']}'
 	AND domain_id='{$_SESSION['domain_id']}'	
 	AND (type='local' OR type='piped')";
 $result = $db->query($query);
-if ($result->numRows()<1) {
-  header ("Location: adminuser.php?faildeleted={$_GET['localpart']}");
-  die();  
+if ($result->numRows() < 1)
+{
+    header ("Location: adminuser.php?faildeleted={$_GET['localpart']}");
+    die;
 }
 
-  
-if ($_GET['confirm'] == '1') {
-
-  # prevent deleting the last admin
-  $query = "SELECT user_id AS count FROM users 
-    WHERE admin=1 AND domain_id='{$_SESSION['domain_id']}'
-	AND (type='local' OR type='piped')
-    AND user_id!='{$_GET['user_id']}'";
-  $result = $db->query($query);
-  if ($result->numRows() == 0) {
-    header ("Location: adminuser.php?lastadmin={$_GET['localpart']}");
-    die;
-  }  
+if (1 == @$_GET['confirm'])
+{
+    /* Prevent deleting the last admin */
+    $admins = $domain->getAdmins();
+    if (count($admins) == 1 && $admins[0]->getId() == $_GET['user_id'])
+    {
+        header ("Location: adminuser.php?lastadmin={$_GET['localpart']}");
+        die;
+    }
 
   $query = "DELETE FROM users
     WHERE user_id='{$_GET['user_id']}'
@@ -36,28 +33,32 @@ if ($_GET['confirm'] == '1') {
   } else {
     header ("Location: adminuser.php?faildeleted={$_GET['localpart']}");
   }
-} else if ($_GET['confirm'] == "cancel") {                 
+}
+elseif ('cancel' == @$_GET['confirm'])
+{
     header ("Location: adminuser.php?faildeleted={$_GET['localpart']}");
     die;                                                      
-} else {
-  $query = "SELECT user_id AS count FROM users 
-    WHERE admin=1 AND domain_id='{$_SESSION['domain_id']}'
-	AND (type='local' OR type='piped')
-    AND user_id!='{$_GET['user_id']}'";
-  $result = $db->query($query);
-  if ($result->numRows() == 0) {
-    header ("Location: adminuser.php?lastadmin={$_GET['localpart']}");
-    die;
-  }
-  $query = "SELECT localpart FROM users WHERE user_id='{$_GET['user_id']}'";
-  $result = $db->query($query);
-  if ($result->numRows()) { $row = $result->fetchRow(); }
+}
+else
+{
+    $admins = $domain->getAdmins();
+    if (count($admins) == 1 && $admins[0]->getId() == $_GET['user_id'])
+    {
+        header ("Location: adminuser.php?lastadmin={$_GET['localpart']}");
+        die;
+    }
+    $query = "SELECT localpart FROM users WHERE user_id='{$_GET['user_id']}'";
+    $result = $db->query($query);
+    if ($result->numRows())
+    {
+        $row = $result->fetchRow();
+    }
 }
 
 $tmplVars['title'] = _('Confirm Delete');
 include 'templates/header.php';
 ?>
-    <div id="menu">
+    <div id="Menu">
       <a href="adminuseradd.php"><?php echo _('Add User'); ?></a><br>
       <a href="admin.php"><?php echo _('Main Menu'); ?></a><br>
       <br><a href="logout.php"><?php echo _('Logout'); ?></a><br>
