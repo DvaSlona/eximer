@@ -29,12 +29,35 @@ require_once 'config/variables.php';
 include_once 'config/functions.php';
 include_once 'config/httpheaders.php';
 
+/*
+ * Маршруты
+ * TODO Это временное решение
+ */
+$routes = array(
+    'sitepasswordsubmit.php' => 'SitePasswordController',
+);
+
 $security = DvaSlona\Eximer\Security\Manager::getInstance();
 $user = $security->getUser();
 if (null === $user)
 {
-    $controller = new DvaSlona\Eximer\Controller\LoginController();
+    $user =  new DvaSlona\Eximer\DB\Object\User();
+    $controller = new DvaSlona\Eximer\Controller\LoginController($user);
     $controller->execute();
+}
+elseif (array_key_exists($filename, $routes))
+{
+    $class = 'DvaSlona\Eximer\Controller\\' . $routes[$filename];
+    $controller = new $class;
+    if ($controller instanceof DvaSlona\Eximer\Controller\AbstractController)
+    {
+        $controller->execute();
+    }
+    else
+    {
+        throw new LogicException(sprintf('Class "%s" must be descendant of "%s"', $class,
+            'DvaSlona\Eximer\Controller\AbstractController'));
+    }
 }
 else
 {
