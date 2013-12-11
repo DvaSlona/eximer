@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . '/config/authpostmaster.php';
   $result = $db->query($query);
   if ($result->numRows()) { $row = $result->fetchRow(); }
   
-  $username = $row[username];
+  $username = $row['username'];
   $domquery = "SELECT avscan,spamassassin,quotas,pipe FROM domains
     WHERE domain_id='{$_SESSION['domain_id']}'";
   $domresult = $db->query($domquery);
